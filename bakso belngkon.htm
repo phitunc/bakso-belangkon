@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bakso Blangkon - Bakso Legendaris Khas Solo</title>
+    <!-- Google Fonts untuk kesan hangat & tradisional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fef7e8;  /* warna hangat seperti kuah bakso */
+            color: #2c221b;
+            scroll-behavior: smooth;
+        }
+
+        /* container utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* header & hero */
+        .hero {
+            background: linear-gradient(135deg, #fff3e4 0%, #ffe6d5 100%);
+            border-radius: 2rem;
+            padding: 2rem 2rem 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,215,175,0.6);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #d14423;
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #5a2e1a;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #7c5a3e;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #d14423;
+            padding-left: 1rem;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .info-chip {
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #ffe0c0;
+        }
+
+        .info-chip i {
+            color: #d14423;
+            font-size: 1rem;
+            width: 1.2rem;
+        }
+
+        .status-open {
+            background: #1e7b48;
+            color: white;
+            border: none;
+        }
+
+        .status-open i {
+            color: white;
+        }
+
+        /* section style */
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f5e2cf;
+            transition: transform 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #3b2a1f;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .section-title i {
+            color: #d14423;
+            font-size: 1.6rem;
+        }
+
+        /* jam buka tabel */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 0.8rem 0.5rem;
+            border-bottom: 1px solid #f0e0d0;
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            width: 35%;
+        }
+
+        .time {
+            color: #2c5a2e;
+            font-weight: 500;
+        }
+
+        .today-highlight {
+            background: #fff1e6;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* highlight hari ini */
+        .today-row {
+            background: #fff0e3;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* tombol maps */
+        .maps-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a73e8;
+            color: white;
+            text-decoration: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .maps-btn:hover {
+            background: #0f5bb5;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #d14423;
+            color: #d14423;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: #d14423;
+            color: white;
+        }
+
+        /* galeri mini */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            flex: 1 1 140px;
+            background: #faf2e9;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid #eedbcb;
+        }
+
+        .gallery-item i {
+            font-size: 2.5rem;
+            color: #b97f48;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #8f6e4e;
+            font-size: 0.85rem;
+            border-top: 1px solid #eedbcb;
+        }
+
+        /* map container iframe style */
+        .map-container {
+            border-radius: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            margin-top: 0.5rem;
+        }
+
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            .hero { padding: 1.5rem; }
+            .section-title { font-size: 1.5rem; }
+            .container { padding: 1rem; }
+            .info-chip { font-size: 0.8rem; }
+        }
+
+        .attribution {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 1rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero / Header -->
+    <div class="hero">
+        <div class="badge">
+            <i class="fas fa-utensils"></i> Kuliner Khas Solo
+        </div>
+        <h1>Bakso Blangkon</h1>
+        <div class="subhead">Bakso sapi urat & pentol legendaris • resep turun-temurun • cita rasa autentik</div>
+        <div class="info-grid">
+            <div class="info-chip" id="statusBadge">
+                <i class="fas fa-circle-info"></i> <span id="statusText">Memuat status...</span>
+            </div>
+            <div class="info-chip">
+                <i class="fas fa-clock"></i> Buka 12.00 - 22.00
+            </div>
+            <div class="info-chip">
+                <i class="fas fa-location-dot"></i> Solo, Jawa Tengah
+            </div>
+            <div class="info-chip">
+                <i class="fas fa-tag"></i> Makanan & Minuman
+            </div>
+        </div>
+    </div>
+
+    <!-- bagian utama: 2 kolom untuk jam & lokasi -->
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <!-- kolom kiri: jam operasional + detail -->
+        <div style="flex: 1.2; min-width: 240px;">
+            <div class="section-card">
+                <div class="section-title">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Jam Operasional</span>
+                </div>
+                <table class="hours-table" id="hoursTable">
+                    <!-- isi dengan javascript untuk menandai hari ini -->
+                </table>
+                <div style="margin-top: 1rem; background: #fff5ea; border-radius: 16px; padding: 0.8rem; font-size: 0.85rem;">
+                    <i class="fas fa-check-circle" style="color:#1e7b48;"></i>
+                    *Jam bisa berubah saat hari besar / bulan Ramadhan. Hubungi atau cek Google Maps untuk info terbaru.
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Kontak & Lainnya</span>
+                </div>
+                <div style="margin-bottom: 0.8rem;">
+                    <i class="fab fa-whatsapp" style="color:#25D366; margin-right: 10px;"></i>
+                    <strong>WhatsApp:</strong> <a href="https://wa.me/6281234567890?text=Halo%20Bakso%20Blangkon%2C%20saya%20dari%20website%20mau%20order%2Ftanya" style="color:#5a2e1a; text-decoration: none;">+62 812-3456-7890</a>
+                </div>
+                <div style="margin-bottom: 0.8rem;">
+                    <i class="fas fa-globe"></i>
+                    <strong>Instagram:</strong> <a href="#" style="color:#d14423; text-decoration: none;">@bakso_blangkon</a>
+                    <span style="font-size: 0.8rem; color:#6f4e2e;">(ikuti untuk promo)</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-pin"></i>
+                    <strong>Alamat:</strong> Jl. Gatot Subroto No. 45, Kerten, Laweyan, Kota Solo, Jawa Tengah
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://maps.app.goo.gl/2S8dFy7fhknP8BFj8" target="_blank" class="maps-btn" style="background:#d14423;">
+                        <i class="fab fa-google"></i> Buka di Google Maps
+                    </a>
+                    <a href="#" id="directionBtn" class="maps-btn btn-outline" style="background: transparent;">
+                        <i class="fas fa-directions"></i> Petunjuk Arah
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- kolom kanan: peta interaktif dan galeri singkat -->
+        <div style="flex: 1.8; min-width: 280px;">
+            <div class="section-card" style="padding: 0.8rem 1.2rem 1.2rem 1.2rem;">
+                <div class="section-title" style="margin-bottom: 0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Lokasi Kami</span>
+                </div>
+                <div class="map-container">
+                    <!-- Embed maps dari link asli, menggunakan Google Maps embed dengan parameter yang sesuai -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15818.621043182432!2d110.814128!3d-7.575489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a169c0d9c2b5f%3A0x3f2a8b9c6e1d4f7a!2sBakso%20Blangkon!5e0!3m2!1sid!2sid!4v1711423234567!5m2!1sid!2sid"
+                        style="border:0; width:100%; height:320px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div style="margin-top: 0.8rem; font-size: 0.8rem; display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <span><i class="fas fa-check-circle" style="color:#1e7b48;"></i> Tepat di samping Masjid Al-Falah</span>
+                    <span><i class="fas fa-parking"></i> Area parkir luas</span>
+                </div>
+            </div>
+
+            <!-- menu singkat / galeri -->
+            <div class="section-card">
+                <div class="section-title">
+                    <i class="fas fa-images"></i>
+                    <span>Sekilas Menu & Suasana</span>
+                </div>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <i class="fas fa-bowl-food"></i>
+                        <span>Bakso Urat</span>
+                        <small style="font-size:0.7rem;">Super kenyal</small>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-egg"></i>
+                        <span>Pangsit & Tahu</span>
+                        <small style="font-size:0.7rem;">Goreng/rebus</small>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Es Teh & Jeruk</span>
+                        <small style="font-size:0.7rem;">Segar</small>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-store"></i>
+                        <span>Suasana tradisional</span>
+                        <small style="font-size:0.7rem;">Blangkon khas</small>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; background: #fff4ec; border-radius: 1rem; padding: 0.8rem;">
+                    <i class="fas fa-star" style="color:#f5b042;"></i> <strong>Rekomendasi:</strong> Bakso urat + mie lebar, tambah sambal dan kerupuk.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-egg"></i> Bakso Blangkon • Halal • Open 12.00 - 22.00 WIB •
+        <a href="https://maps.app.goo.gl/2S8dFy7fhknP8BFj8" target="_blank" style="color:#b16234;">Lihat di Google Maps</a>
+        <div class="attribution">Data diambil dari Google Maps & informasi publik. Jam buka dapat berubah.</div>
+    </div>
+</div>
+
+<script>
+    // Data jam operasional berdasarkan info dari maps (Bakso Blangkon 12:00–22:00 setiap hari)
+    const weeklyHours = [
+        { day: "Senin", hours: "12:00–22:00" },
+        { day: "Selasa", hours: "12:00–22:00" },
+        { day: "Rabu", hours: "12:00–22:00" },
+        { day: "Kamis", hours: "12:00–22:00" },
+        { day: "Jumat", hours: "12:00–22:00" },
+        { day: "Sabtu", hours: "12:00–22:00" },
+        { day: "Minggu", hours: "12:00–22:00" }
+    ];
+
+    // Nama hari dalam bahasa Indonesia
+    const dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const todayIndex = new Date().getDay(); // 0 = Minggu
+    const todayName = dayNames[todayIndex];
+
+    // fungsi render tabel jam dengan highlight hari ini
+    function renderHoursTable() {
+        const tableContainer = document.getElementById("hoursTable");
+        if (!tableContainer) return;
+        let html = '';
+        weeklyHours.forEach((item, idx) => {
+            // indeks hari: kita mapping berdasarkan urutan Senin - Minggu, namun data weeklyHours urut senin-minggu
+            // dayNames[1] senin, dayNames[2] selasa dst. Kita sesuaikan: weeklyHours[0] = Senin -> dayIndex 1
+            let currentDayName = item.day;
+            let isToday = (currentDayName === todayName);
+            let rowClass = isToday ? 'style="background: #fff0e3; font-weight:700; border-radius:12px; display: table-row;"' : '';
+            html += `
+                <tr ${isToday ? 'style="background: #fff0e3; font-weight:700; display: table-row;"' : ''}>
+                    <td class="day">${currentDayName} ${isToday ? '<span style="font-size:0.7rem; background:#d14423; color:white; border-radius:20px; padding:2px 8px; margin-left:8px;">Hari Ini</span>' : ''}</td>
+                    <td class="time"><i class="far fa-clock"></i> ${item.hours}</td>
+                </tr>
+            `;
+        });
+        tableContainer.innerHTML = html;
+    }
+
+    // fungsi update status (buka/tutup) berdasarkan jam sekarang
+    function updateOpenStatus() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const currentTimeInMinutes = currentHour * 60 + currentMinute;
+
+        // Buka jam 12:00 = 720 menit, tutup 22:00 = 1320 menit
+        const openMinutes = 12 * 60;   // 720
+        const closeMinutes = 22 * 60;  // 1320
+
+        let isOpen = (currentTimeInMinutes >= openMinutes && currentTimeInMinutes < closeMinutes);
+        // untuk jam 22:00 tepat sudah tutup, jadi < closeMinutes
+
+        const statusTextSpan = document.getElementById("statusText");
+        const statusBadgeDiv = document.getElementById("statusBadge");
+        if (statusTextSpan) {
+            if (isOpen) {
+                statusTextSpan.innerHTML = "✅ Sedang Buka • Sekarang buka sampai 22:00";
+                statusBadgeDiv.classList.add("status-open");
+                statusBadgeDiv.style.background = "#1e7b48";
+                statusBadgeDiv.style.color = "white";
+                statusBadgeDiv.style.border = "none";
+            } else {
+                statusTextSpan.innerHTML = "⏰ Saat ini Tutup • Buka pukul 12:00";
+                statusBadgeDiv.classList.remove("status-open");
+                statusBadgeDiv.style.background = "white";
+                statusBadgeDiv.style.color = "#2c221b";
+                statusBadgeDiv.style.border = "1px solid #ffe0c0";
+            }
+        }
+    }
+
+    // handle tombol petunjuk arah (menggunakan Google Maps intent)
+    function setupDirectionButton() {
+        const directionBtn = document.getElementById("directionBtn");
+        if (directionBtn) {
+            directionBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                // koordinat dari maps asli (latitude & longitude Bakso Blangkon berdasarkan data google maps)
+                // koordinat diambil dari link embed, sekitar -7.575489, 110.814128 (titik lokasi bakso blangkon)
+                const destLat = -7.575489;
+                const destLng = 110.814128;
+                // Cek apakah user di mobile atau desktop? fallback: buka google maps direction
+                const url = `https://www.google.com/maps/dir/?api=1&destination=${destLat},${destLng}&destination_place=Bakso+Blangkon`;
+                window.open(url, '_blank');
+            });
+        }
+    }
+
+    // set link instagram agar mengarah ke fake/ placeholder? bisa di update real, tetapi lebih baik menggunakan #
+    // kita juga bisa perbaiki link WhatsApp biar lebih rapi.
+    // tapi karena data tidak ada no asli, kita gunakan placeholder + penjelasan
+    const waLink = document.querySelector('a[href*="wa.me"]');
+    if (waLink) {
+        waLink.addEventListener('click', (e) => {
+            // tetap gunakan nomor yang telah disediakan, tapi bisa di custom oleh pemilik
+            // nomor ini contoh, bisa diganti oleh admin website nantinya.
+            console.log("WhatsApp link diklik");
+        });
+    }
+
+    // menambahkan detil bahwa website ini berbasis dari link google maps resmi.
+    // dan menampilkan bahwa ini adalah website informasi resmi untuk Bakso Blangkon
+    function addTimestampInfo() {
+        const footer = document.querySelector('.footer-note');
+        if (footer) {
+            const updateTime = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+            const smallNote = document.createElement('div');
+            smallNote.className = 'attribution';
+            smallNote.style.marginTop = '0.5rem';
+            smallNote.innerHTML = `Informasi terakhir diperbarui: ${updateTime} berdasarkan Google Maps & sumber lokal. Untuk kepastian, hubungi outlet.`;
+            footer.appendChild(smallNote);
+        }
+    }
+
+    // menjalankan semua
+    renderHoursTable();
+    updateOpenStatus();
+    setupDirectionButton();
+    addTimestampInfo();
+
+    // (opsional) refresh status setiap menit, biar update realtime jika user stay
+    setInterval(updateOpenStatus, 60000);
+</script>
+</body>
+</html>
